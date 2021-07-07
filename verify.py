@@ -30,10 +30,6 @@ content_bytes = content.encode()
 content_sha256 = base64.b64encode(SHA256.new(content_bytes).digest())
 content_sha256_decoded = content_sha256.decode()
 
-# print('content_bytes =', content_bytes)
-# print('content_sha256 =', content_sha256)
-# print('content_sha256_decoded =', content_sha256_decoded)
-
 # Datetime object containing current date and time in the format YYYY-MM-DD hh:mm:ss
 now = datetime.now()
 dt_string = now.strftime("%Y-%m-%d %H:%M:%S")
@@ -68,21 +64,15 @@ sign_msg = '|'.join([method.upper(), url.lower(), sign_headers])
 sign_msg_bytes = sign_msg.encode()
 # print('sign_msg_bytes =', sign_msg_bytes)
 
-
 # Encode signature
 rsa_signature = base64.b64encode(signer.sign(SHA256.new(sign_msg_bytes)))
 rsa_signature_decoded = rsa_signature.decode()
 
-# print('rsa_signature =', rsa_signature)
-# print('rsa_signature_decoded =', rsa_signature_decoded)
-
 # Construct Auth Header
 rsa_auth_header = 'RSA-SHA256 ' + rsa_signature_decoded
-# print('rsa_auth_header =', rsa_auth_header)
 
 # Test if verified, if not, raise an AssertionError.
 assert verifier_1.verify(SHA256.new(sign_msg_bytes), base64.b64decode(rsa_signature)), 'Invalid signature'
-
 
 class bcolors:
     HEADER      =   '\033[95m'
