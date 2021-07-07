@@ -74,16 +74,14 @@ rsa_auth_header = 'RSA-SHA256 ' + rsa_signature_decoded
 # Test if verified, if not, raise an AssertionError.
 assert verifier_1.verify(SHA256.new(sign_msg_bytes), base64.b64decode(rsa_signature)), 'Invalid signature'
 
+# Add fancy colors to output
 class bcolors:
-    HEADER      =   '\033[95m'
-    OKBLUE      =   '\033[94m'
     OKCYAN      =   '\033[96m'
     OKGREEN     =   '\033[92m'
     WARNING     =   '\033[93m'
     FAIL        =   '\033[91m'
     ENDC        =   '\033[0m'
     BOLD        =   '\033[1m'
-    UNDERLINE   =   '\033[4m'
 
 print(f'{bcolors.BOLD}X-Settle-Content-Digest value is:{bcolors.ENDC} {bcolors.OKCYAN}{content_sha256_decoded}{bcolors.ENDC}')
 print(f'{bcolors.BOLD}Headers part of signature message is:{bcolors.ENDC} {bcolors.OKCYAN}{sign_headers}{bcolors.ENDC}')
