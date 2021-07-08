@@ -7,6 +7,7 @@ from Crypto.Signature import PKCS1_v1_5
 from Crypto.Signature.pkcs1_15 import PKCS115_SigScheme
 from datetime import datetime
 
+# Changing working directory to the directory of this file
 os.chdir(os.path.dirname(__file__))
 
 # Import Key-Pairs
