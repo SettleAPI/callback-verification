@@ -84,6 +84,7 @@ class bcolors:
     ENDC        =   '\033[0m'
     BOLD        =   '\033[1m'
 
+
 print(f'{bcolors.BOLD}X-Settle-Content-Digest value is:{bcolors.ENDC} {bcolors.OKCYAN}{content_sha256_decoded}{bcolors.ENDC}')
 print(f'{bcolors.BOLD}Headers part of signature message is:{bcolors.ENDC} {bcolors.OKCYAN}{sign_headers}{bcolors.ENDC}')
 print(f'{bcolors.BOLD}Signature message is:{bcolors.ENDC} {bcolors.OKCYAN}{sign_msg}{bcolors.ENDC}')
