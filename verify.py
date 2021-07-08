@@ -30,11 +30,11 @@ content_bytes = content.encode()
 
 content_sha256 = base64.b64encode(SHA256.new(content_bytes).digest())
 content_sha256_decoded = content_sha256.decode()
+print(f'content_sha256 = {content_sha256}')
 
 # Datetime object containing current date and time in the format YYYY-MM-DD hh:mm:ss
 now = datetime.now()
 dt_string = now.strftime("%Y-%m-%d %H:%M:%S")
-# print("date and time =", dt_string)
 
 headers = {
     'Accept': 'application/vnd.mcash.api.merchant.v1+json',
@@ -59,11 +59,9 @@ for key, value in sorted(headers.items()):
 
 # Construct signed message
 sign_msg = '|'.join([method.upper(), url.lower(), sign_headers])
-# print('sign_msg =', sign_msg)
 
 # Encode signed message
 sign_msg_bytes = sign_msg.encode()
-# print('sign_msg_bytes =', sign_msg_bytes)
 
 # Encode signature
 rsa_signature = base64.b64encode(signer.sign(SHA256.new(sign_msg_bytes)))
