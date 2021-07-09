@@ -11,14 +11,14 @@ from datetime import datetime
 os.chdir(os.path.dirname(__file__))
 
 # Import Key-Pairs
-with open('sample-privkey.pem', 'r') as fd:
+with open('../keys/sample-privkey.pem', 'r') as fd:
     signer = PKCS1_v1_5.new(RSA.importKey(fd.read()))
 
-with open('sample-pubkey.pem', 'r') as fd:
+with open('../keys/sample-pubkey.pem', 'r') as fd:
     verifier_1 = PKCS1_v1_5.new(RSA.importKey(fd.read()))
 
 # Import other Pub-Key
-with open('testserver-pub.pem', 'r') as fd:
+with open('../keys/testserver-pub.pem', 'r') as fd:
     verifier_2 = PKCS1_v1_5.new(RSA.importKey(fd.read()))
 
 method = 'POST'
